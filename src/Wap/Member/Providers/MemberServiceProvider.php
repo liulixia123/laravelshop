@@ -10,7 +10,10 @@ class MemberServiceProvider extends ServiceProvider
     protected $routeMiddleware = [
          'wechat.oauth' => \Overtrue\LaravelWeChat\Middleware\OAuthAuthenticate::class,
     ];
-
+    //console命令组件
+    protected $commands = [
+        \Lisa18\LaravelShop\Wap\Member\Console\Commands\InstallCommand::class,
+    ];
     protected $middlewareGroups = [];
     // 模仿
     public function register()
