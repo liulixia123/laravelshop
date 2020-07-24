@@ -1,5 +1,5 @@
 <?php
-namespace ShineYork\LaravelShop\Wap\Member\Http\Controllers;
+namespace Lisa18\LaravelShop\Wap\Member\Http\Controllers;
 
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
