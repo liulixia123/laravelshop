@@ -3,9 +3,42 @@ namespace Lisa18\LaravelShop\Wap\Member\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Arr;
 class MemberServiceProvider extends ServiceProvider
 {
+    // member组件需要注入的中间件
+    protected $routeMiddleware = [
+         'wechat.oauth' => \Overtrue\LaravelWeChat\Middleware\OAuthAuthenticate::class,
+    ];
+
+    protected $middlewareGroups = [];
+    // 模仿
+    public function register()
+    {
+        $this->registerRoutes();
+         // 怎么加载config配置文件
+        $this->mergeConfigFrom(__DIR__.'/../Config/member.php', "wap.member");
+        // 怎么根据配置文件去加载auth信息
+        $this->registerRouteMiddleware();
+    }
+    public function boot()
+    {
+        $this->loadMemberAuthConfig();
+    }
+    protected function loadMemberAuthConfig()
+    {
+        config(Arr::dot(config('wap.member.auth', []), 'auth.'));
+    }
+    protected function registerRouteMiddleware()
+    {
+        foreach ($this->middlewareGroups as $key => $middleware) {
+            $this->app['router']->middlewareGroup($key, $middleware);
+        }
+
+        foreach ($this->routeMiddleware as $key => $middleware) {
+            $this->app['router']->aliasMiddleware($key, $middleware);
+        }
+    }
     // 模仿
     public function register()
     {
