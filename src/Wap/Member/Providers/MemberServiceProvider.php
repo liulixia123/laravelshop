@@ -40,12 +40,7 @@ class MemberServiceProvider extends ServiceProvider
             $this->app['router']->aliasMiddleware($key, $middleware);
         }
     }
-    // 模仿
-    public function register()
-    {
-        $this->registerRoutes();
-    }
-
+    
     // 参考别人的写法
     // 对于源码熟悉更好一些
     private function registerRoutes()
