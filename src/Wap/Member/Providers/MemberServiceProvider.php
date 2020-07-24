@@ -24,6 +24,7 @@ class MemberServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->loadMemberAuthConfig();
+        $this->loadMigrations();
     }
     protected function loadMemberAuthConfig()
     {
@@ -64,6 +65,13 @@ class MemberServiceProvider extends ServiceProvider
             // 这是前缀
             'prefix' => 'wap/member',
         ];
+    }
+    //加载数据库迁移
+    public function loadMigrations()
+    {
+        if ($this->app->runningInConsole()) {
+            $this->loadMigrationsFrom(__DIR__.'/../Database/migrations');
+        }
     }
 }
 ?>
