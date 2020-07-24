@@ -14,13 +14,7 @@ class InstallCommand extends Command{
 
     public function handle()
     {
-        // call
-        $this->call('migrate');
-        /*$this->call('vendor:publish', [
-          // 参数表示 => 参数值
-          "--provider"=>"Lisa18\LaravelShop\Wap\Member\Providers\MemberServiceProvider"
-        ]);*/
-        // echo '这是测试wap-member的安装命令';
+        
     }
 }
 ?>
