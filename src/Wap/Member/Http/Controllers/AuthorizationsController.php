@@ -4,7 +4,7 @@ namespace Lisa18\LaravelShop\Wap\Member\Http\Controllers;
 use Illuminate\Http\Request;
 use Lisa18\LaravelShop\Wap\Member\Models\User;
 // use Illuminate\Support\Facades\Auth;
-
+use Lisa18\LaravelShop\Wap\Member\Http\Controllers\Controller;
 class AuthorizationsController extends Controller
 {
     public function wechatStore(Request $request)
