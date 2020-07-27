@@ -14,7 +14,8 @@ class InstallCommand extends Command{
 
     public function handle()
     {
-        
+        // call
+        $this->call('migrate');
     }
 }
 ?>
