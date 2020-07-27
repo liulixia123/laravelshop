@@ -28,6 +28,7 @@ class MemberServiceProvider extends ServiceProvider
     {
         $this->loadMemberAuthConfig();
         $this->loadMigrations();
+        $this->commands($this->commands);
     }
     protected function loadMemberAuthConfig()
     {
