@@ -23,15 +23,26 @@ class MemberServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__.'/../Config/member.php', "wap.member");
         // 怎么根据配置文件去加载auth信息
         $this->registerRouteMiddleware();
+        //配置文件发布
+        $this->registerPublishing();
     }
     public function boot()
     {
-        $this->loadMemberAuthConfig();
+        //$this->loadMemberAuthConfig();
+        $this->loadMemberConfig();
         $this->loadMigrations();
         $this->commands($this->commands);
     }
     protected function loadMemberAuthConfig()
     {
+        config(Arr::dot(config('wap.member.auth', []), 'auth.'));
+    }
+    // 吧这个组件的auth信息合并到config的auth
+    protected function loadMemberConfig()
+    {
+        // Arr 基础操方法封装
+        // 这个数组合并之后，一定要再此保持laravel项目中
+        config(Arr::dot(config('wap.member.wechat', []), 'wechat.'));
         config(Arr::dot(config('wap.member.auth', []), 'auth.'));
     }
     protected function registerRouteMiddleware()
@@ -70,6 +81,17 @@ class MemberServiceProvider extends ServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->loadMigrationsFrom(__DIR__.'/../Database/migrations');
+        }
+    }
+    //配置文件发布
+    public function registerPublishing()
+    {
+        if ($this->app->runningInConsole()) {
+            //                  [当前组件的配置文件路径 =》 这个配置复制那个目录] , 文件标识
+            // 1. 不填就是默认的地址 config_path 的路径 发布配置文件名不会改变
+            // 2. 不带后缀就是一个文件夹
+            // 3. 如果是一个后缀就是一个文件
+            $this->publishes([__DIR__.'/../config' => config_path('wap')], 'laravel-shop-wap-member-config');
         }
     }
 }
