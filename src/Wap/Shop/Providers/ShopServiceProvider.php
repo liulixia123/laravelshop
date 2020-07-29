@@ -3,6 +3,7 @@
 namespace Lisa18\LaravelShop\Wap\Shop\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Route;
 
 class ShopServiceProvider extends ServiceProvider
 {
@@ -25,7 +26,7 @@ class ShopServiceProvider extends ServiceProvider
     protected function registerRoutes()
     {
         Route::group($this->routeConfiguration(), function () {
-            $this->loadRoutesFrom(__DIR__.'/../Routes/shop.php');
+            $this->loadRoutesFrom(__DIR__.'/../Http/routes.php');
         });
     }
     protected function routeConfiguration()
