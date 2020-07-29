@@ -4,6 +4,7 @@ namespace Lisa18\LaravelShop\Wap\Member\Http\Controllers;
 use Illuminate\Http\Request;
 use Lisa18\LaravelShop\Wap\Member\Models\User;
 // use Illuminate\Support\Facades\Auth;
+use Lisa18\LaravelShop\Wap\Member\Facades\Member;
 use Lisa18\LaravelShop\Wap\Member\Http\Controllers\Controller;
 class AuthorizationsController extends Controller
 {
@@ -20,6 +21,8 @@ class AuthorizationsController extends Controller
                 "image_head"    => $wechatUser->avatar
             ]);
         }
+        // 然后用laravel的auth登入
+        Member::guard()->login($user);
         // 登入状态->改变
         // 迁移性的问
         // 改变用户的状态设置为登入
