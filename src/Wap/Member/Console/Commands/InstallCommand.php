@@ -19,8 +19,7 @@ class InstallCommand extends Command{
         //安装配置文件
         $this->call('vendor:publish', [
           // 参数表示 => 参数值
-          "--
-          provider"=>"Lisa18\LaravelShop\Wap\Member\Providers\MemberServiceProvider"
+          "--provider"=>"Lisa18\LaravelShop\Wap\Member\Providers\MemberServiceProvider"
         ]);
     }
 }

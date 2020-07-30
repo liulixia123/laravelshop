@@ -1,6 +1,7 @@
 <?php
 namespace Lisa18\LaravelShop\Extend\Artisan\Make;
-
+use Illuminate\Support\Str;
+use Symfony\Component\Console\Input\InputArgument;
 trait GeneratorCommand
 {
     protected $packagePath = __DIR__."/../../..";
@@ -40,5 +41,11 @@ trait GeneratorCommand
             ['package', InputArgument::REQUIRED, 'The package of the class'],
             ['name', InputArgument::REQUIRED, 'The name of the class'],
         ];
+    }
+
+    //提取出来定义模型位置
+    protected function getDefaultNamespace($rootNamespace)
+    {
+        return $rootNamespace.'\\'.$this->getPackageInput().$this->defaultNamespace;
     }
 }

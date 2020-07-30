@@ -11,7 +11,8 @@ class ArtisanServiceProvider extends ServiceProvider
     protected $command = [
         Make\ClassMakeCommand::class,
         Make\ModelMakeCommand::class,       
-        Make\MigrateMakeCommand::class,       
+        Make\MigrateMakeCommand::class, 
+        Make\SeederMakeCommand::class     
     ];
 
     public function register()
