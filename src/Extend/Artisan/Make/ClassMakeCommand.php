@@ -5,8 +5,8 @@ namespace Lisa18\LaravelShop\Extend\Artisan\Make;
 use Illuminate\Support\Str;
 use InvalidArgumentException;
 use Symfony\Component\Console\Input\InputOption;
-
-class ClassMakeCommand extends GeneratorCommand
+use Illuminate\Console\GeneratorCommand as Command;
+class ClassMakeCommand extends Command
 {
     /**
      * The name and signature of the console command.
