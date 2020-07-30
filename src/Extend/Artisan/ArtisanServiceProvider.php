@@ -7,7 +7,12 @@ use Illuminate\Support\ServiceProvider;
 class ArtisanServiceProvider extends ServiceProvider
 {
 
-    protected $command = [];
+    // 这是命令的注册注册地点
+    protected $command = [
+        Make\ClassMakeCommand::class,
+        Make\ModelMakeCommand::class,       
+        Make\MigrateMakeCommand::class,       
+    ];
 
     public function register()
     {
