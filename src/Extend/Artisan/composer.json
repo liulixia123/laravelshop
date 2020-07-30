@@ -11,7 +11,7 @@
     "require": {},
     "autoload": {
         "psr-4": {
-            "Lisa18\\LaravelShop\\Extend\\Artisan\\": "./src/"
+            "Lisa18\\LaravelShop\\Extend\\Artisan\\": ""
         }
     }
 }
