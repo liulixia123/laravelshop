@@ -10,8 +10,11 @@
     ],
     "require": {},
     "autoload": {
+        "files": [
+            "src/Wap/Shop/Support/helpers.php"
+        ],
         "psr-4": {
-            "Lisa18\\LaravelShop\\": "src"
+            "Lisa18\\LaravelShop\\Wap\\": "src\Wap"
         }
     }
 }
