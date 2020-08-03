@@ -1,0 +1,17 @@
+{
+    "name": "lisa18\/laravel-shop-extend-swoole",
+    "description": "test swoole",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "liulixia123",
+            "email": "1518545702@qq.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Lisa18\\LaravelShop\\Extend\\Swoole\\": "src"
+        }
+    }
+}
