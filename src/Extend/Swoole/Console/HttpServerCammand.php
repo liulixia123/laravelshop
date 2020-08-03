@@ -24,6 +24,7 @@ class HttpServerCammand extends Command{
 
     protected function start()
     {
+        $this->laravel['swoole.manager']->run();
         return 'start';
     }
     protected function stop()
