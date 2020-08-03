@@ -20,7 +20,8 @@
     "extra":{
         "laravel":{
             "providers":[                
-                "Lisa18\\LaravelShop\\Extend\\Artisan\\ArtisanServiceProvider"                
+                "Lisa18\\LaravelShop\\Extend\\Artisan\\ArtisanServiceProvider",
+                "Lisa18\\LaravelShop\\Extend\\Swoole\\SwooleServiceProvider"                
             ]
         }
     }
