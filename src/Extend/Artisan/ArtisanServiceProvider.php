@@ -12,7 +12,9 @@ class ArtisanServiceProvider extends ServiceProvider
         Make\ClassMakeCommand::class,
         Make\ModelMakeCommand::class,       
         Make\MigrateMakeCommand::class, 
-        Make\SeederMakeCommand::class     
+        Make\SeederMakeCommand::class,
+        Make\ControllerMakeCommand::class, 
+        Make\ObserverMakeCommand::class,   
     ];
 
     public function register()
