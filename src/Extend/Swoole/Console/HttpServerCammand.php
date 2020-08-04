@@ -8,6 +8,8 @@ class HttpServerCammand extends Command{
 
     protected $description = 'Command description';
 
+    protected $manager;
+
     public function __construct()
     {
         parent::__construct();
@@ -15,7 +17,9 @@ class HttpServerCammand extends Command{
 
     public function handle()
     {
-    	$this->info($this->execution());
+    	$this->manager = $this->laravel->make('extend.swoole_manager');
+        //$this->info($this->execution());
+        $this->execution();
     }
     protected function execution()
     {
@@ -24,7 +28,7 @@ class HttpServerCammand extends Command{
 
     protected function start()
     {
-        $this->laravel['swoole.manager']->run();
+        $this->manager->run();
         return 'start';
     }
     protected function stop()

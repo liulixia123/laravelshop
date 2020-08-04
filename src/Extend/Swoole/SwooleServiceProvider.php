@@ -8,6 +8,7 @@ use Swoole\WebSocket\Server as WebSocketSwooleServer;
 use Illuminate\Support\ServiceProvider;
 
 class SwooleServiceProvider extends ServiceProvider{
+    protected static $server;
     protected $command = [
         Console\HttpServerCammand::class
     ];
@@ -19,14 +20,27 @@ class SwooleServiceProvider extends ServiceProvider{
         );
         $this->commands($this->command);
         $this->registerSwooleServer();
+        $this->registerSwooleManager();
     }
 
     public function boot()
     {
     }
+    /**
+     * 注册swoole的服务
+     */
+    public function registerSwooleManager()
+    {
+        $this->app->singleton('extend.swoole_manager', function($app){
+            return new Manager($app);
+        });
+    }
+    /**
+     * 注册swoole的服务
+     */
     protected function registerSwooleServer()
     {
-        $this->app->singleton('swoole.server', function (){
+        $this->app->singleton('extend.swoole_server', function (){
             // 1. 获取配置
             // 2. 确定创建的服务
             // 3. 创建swoole
@@ -52,11 +66,5 @@ class SwooleServiceProvider extends ServiceProvider{
         $server = config('extend.swoole.socket_type') ? HttpSwooleServer::class : WebSocketSwooleServer::class ;
         static::$server = new $server(config('extend.swoole.listen.ip'), config('extend.swoole.listen.port'));
     }
-
-    public function registerManager()
-    {
-        $this->app->singleton(Manager::class, function($app){
-            return new Manager($app);
-        });
-    }
+    
 }
